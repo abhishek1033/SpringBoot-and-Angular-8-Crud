@@ -7,6 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.springframework.cache.annotation.CacheConfig;
+
+import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 @Table(name = "TEMP_EMPLOYEE")
@@ -15,15 +20,19 @@ public class Employee
 {
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="TEMP_EMPLOYEE_SEQ")
+	@ApiModelProperty(notes = "The database generated employee ID")
 	@Column(name = "id")
 	private long id;
 	
+	@ApiModelProperty(notes = "first Name of employee")
 	@Column(name = "first_name", nullable = false)
 	private String firstName;
 	
+	@ApiModelProperty(notes = "last Name of employee")
 	@Column(name = "last_name", nullable = false)
     private String lastName;
 	
+	@ApiModelProperty(notes = "email address of employee")
 	@Column(name = "email_address", nullable = false)
     private String emailId;
 
